@@ -23,10 +23,7 @@ while compteur < 50:
     answer_state = screen.textinput(title=f"{compteur}/50 States correct", prompt="What's another state's name?").title() 
     
     if answer_state == "Exit":
-        state_to_learn = []
-        for state in all_states:
-            if not state in guessed_states:
-                state_to_learn.append(state)
+        state_to_learn = [state for state in all_states if state not in guessed_states]
         df = pd.DataFrame(state_to_learn)
         df.to_csv("learn.csv")
         break
